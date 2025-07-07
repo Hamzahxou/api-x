@@ -38,9 +38,11 @@ const startServer = async () => {
   try {
     await connectDB();
 
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
+    if (ENV.NODE_ENV !== "production") {
+      app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+      });
+    }
   } catch (err) {
     console.log(err.message);
     process.exit(1);
@@ -48,3 +50,5 @@ const startServer = async () => {
 };
 
 startServer();
+
+export default app;

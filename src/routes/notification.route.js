@@ -1,5 +1,5 @@
 import express from "express";
-import { protectRoute } from "../middlerware/auth.middleware";
+import { protectRoute } from "../middlerware/auth.middleware.js";
 import {
   deleteNotification,
   getNotifications,
