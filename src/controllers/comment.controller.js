@@ -47,7 +47,8 @@ export const createComment = asyncHandler(async (req, res) => {
       from: user._id,
       to: post.user,
       type: "comment",
-      post: post._id,
+      post: postId,
+      comment: comment._id,
     });
   }
 
