@@ -41,8 +41,8 @@ export const getPost = asyncHandler(async (req, res) => {
 export const getUserPosts = asyncHandler(async (req, res) => {
   const { username } = req.params;
 
-  const user = await User.find({ user: username._id });
-  if (!user) return res.status(404).json({ message: "User not found" });
+  const user = await User.findOne({ username });
+  if (!user) return res.status(404).json({ error: "User not found" });
 
   const posts = await Post.find({ user: user._id })
     .sort({ createdAt: -1 })
